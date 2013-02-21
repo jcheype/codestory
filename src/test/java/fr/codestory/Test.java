@@ -1,5 +1,6 @@
 package fr.codestory;
 
+
 public class Test {
 
     @org.junit.Test

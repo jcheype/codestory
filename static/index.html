@@ -2,14 +2,57 @@
 
 <head>
     <title>The Geek Meat</title>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
 </head>
 <body>
 <h1>The Geek Meat</h1>
-<section id="screen">
-{{screen}}
-</section>
-<section id="chat">
-    <input type="text" nb-model="sentence" ><a href="" ng-click="send()" >Send</a>
-</section>
-</body></html>
+
+    <section id="screen">
+
+    </section>
+    <section id="chat">
+        <input type="text" id="sentence"><input type="button" class="btn" id="send" value="Send"/>
+    </section>
+
+
+
+<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script>-->
+
+<!--<script src="/static/js/app.js"></script>-->
+<!--<script src="/static/js/services.js"></script>-->
+<!--<script src="/static/js/controllers.js"></script>-->
+<!--<script src="/static/js/filters.js"></script>-->
+<!--<script src="/static/js/directives.js"></script>-->
+
+</body>
+<script>
+
+function call(f){
+    $.get('/listen/room1', function(data) {
+        $("#screen").html($("#screen").html() + "<p>" + data + "</p>");
+        f(f);
+    });
+
+}
+
+    $("document").ready(function() {
+        console.log("bla");
+
+        call(call);
+
+        $("#send").click(function(e){
+            console.log($("#sentence").text());
+
+//            $("#screen").html($("#screen").html() + "<p>" + $("#sentence").val()) + "</p>";
+
+            $.get('/chat/room1', { sentence:  $("#sentence").val() }, function(data) {
+
+            });
+
+
+
+        })
+    })
+</script>
+</html>
