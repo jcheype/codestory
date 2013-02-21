@@ -31,7 +31,7 @@ public class App {
         restHandler = new SimpleRestHandler();
         delfaultChannelHandler = new HttpApiServerHandler(restHandler);
         bootstrap.setPipelineFactory(new WebServerPipelinefactory(delfaultChannelHandler));
-        channel = bootstrap.bind(new InetSocketAddress(9999));
+        channel = bootstrap.bind(new InetSocketAddress(19999));
     }
 
     public void registerRoute(){
